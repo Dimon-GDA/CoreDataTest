@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-
+#import "Application.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,7 +19,94 @@
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    self.manageModel=[NSManagedObjectModel mergedModelFromBundles:nil];
+    
+    self.storeCoordinator=[[NSPersistentStoreCoordinator alloc]  initWithManagedObjectModel:self.manageModel];
+    
+    NSString* path=[NSString stringWithFormat:@"%@/%@",[self applicationDocumentsDirectory], @"test.sqlite"];
+    
+    NSURL* fileURL=[NSURL fileURLWithPath:path];
+    NSError* error;
+    [self.storeCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:fileURL options:nil error:&error];
+    
+    self.managedContex =[NSManagedObjectContext new];
+    [self.managedContex setPersistentStoreCoordinator:self.storeCoordinator];
+    
+    
+   // Application* myApplication=[NSEntityDescription insertNewObjectForEntityForName:@"Application" inManagedObjectContext:self.managedContex];
+    //NSLog(@"%@",myApplication);
+    
+    //myApplication.name=@"Test3";
+    //myApplication.price=[NSNumber numberWithFloat:0.7];
+    
+    //[self.managedContex save:&error];
+    
+    
+    // NSLog(@"%@",myApplication);
+    
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Application" inManagedObjectContext:self.managedContex];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init] ;
+    
+    [request setEntity:entityDescription];
+    
+    
+    //[request setPredicate:[NSPredicate predicateWithFormat:@"name == 'Test3'"]];
+    
+    [request setPredicate:[NSPredicate predicateWithValue:true]];
+    
+    
+    NSArray *array = [self.managedContex executeFetchRequest:request error:&error];
+    
+    
+    
+    for (NSManagedObject *Application in array)
+    {
+        NSLog(@"Name: %@", [Application valueForKey:@"name"]);
+        NSLog(@"Price: %@", [Application valueForKey:@"price"]);
+        /*if([[Application valueForKey:@"name"] isEqual: @"Test3"])
+         {
+         [self.managedContex deleteObject:Application];
+         [self.managedContex save:&error];
+         break;
+         
+         }*/
+        
+    
+    }
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects: sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptors];
+    
+    
+    
+    
+    
+    self.fetchResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedContex sectionNameKeyPath:nil cacheName:nil];
+    
+  
+    
+    
+    [self.fetchResultController performFetch:&error];
+    
+      
+    for (NSUInteger i=0; i<[[self.fetchResultController fetchedObjects] count]; i++)
+    {
+        NSLog(@"Name: %@", [[[self.fetchResultController fetchedObjects] objectAtIndex:i] valueForKey:@"name"]);
+        NSLog(@"Price: %@", [[[self.fetchResultController fetchedObjects] objectAtIndex:i] valueForKey:@"price"]);
+               
+        
+    }
+    
+    
+    
     return YES;
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

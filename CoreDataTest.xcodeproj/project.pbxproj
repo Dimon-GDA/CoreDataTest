@@ -18,6 +18,9 @@
 		84F58F7A16E523B900A24AB2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F58F7916E523B900A24AB2 /* Default-568h@2x.png */; };
 		84F58F7D16E523B900A24AB2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F58F7C16E523B900A24AB2 /* ViewController.m */; };
 		84F58F8016E523B900A24AB2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F58F7E16E523B900A24AB2 /* ViewController.xib */; };
+		84F58F8716E5242400A24AB2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F58F8616E5242300A24AB2 /* CoreData.framework */; };
+		84F58F8A16E526B600A24AB2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84F58F8816E526B600A24AB2 /* Model.xcdatamodeld */; };
+		84F58F8D16E52BD700A24AB2 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F58F8C16E52BD700A24AB2 /* Application.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,10 @@
 		84F58F7B16E523B900A24AB2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		84F58F7C16E523B900A24AB2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		84F58F7F16E523B900A24AB2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		84F58F8616E5242300A24AB2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		84F58F8916E526B600A24AB2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		84F58F8B16E52BD700A24AB2 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		84F58F8C16E52BD700A24AB2 /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Application.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F58F8716E5242400A24AB2 /* CoreData.framework in Frameworks */,
 				84F58F6416E523B800A24AB2 /* UIKit.framework in Frameworks */,
 				84F58F6616E523B800A24AB2 /* Foundation.framework in Frameworks */,
 				84F58F6816E523B800A24AB2 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +81,7 @@
 		84F58F6216E523B800A24AB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84F58F8616E5242300A24AB2 /* CoreData.framework */,
 				84F58F6316E523B800A24AB2 /* UIKit.framework */,
 				84F58F6516E523B800A24AB2 /* Foundation.framework */,
 				84F58F6716E523B800A24AB2 /* CoreGraphics.framework */,
@@ -83,12 +92,15 @@
 		84F58F6916E523B800A24AB2 /* CoreDataTest */ = {
 			isa = PBXGroup;
 			children = (
+				84F58F8B16E52BD700A24AB2 /* Application.h */,
+				84F58F8C16E52BD700A24AB2 /* Application.m */,
 				84F58F7216E523B900A24AB2 /* AppDelegate.h */,
 				84F58F7316E523B900A24AB2 /* AppDelegate.m */,
 				84F58F7B16E523B900A24AB2 /* ViewController.h */,
 				84F58F7C16E523B900A24AB2 /* ViewController.m */,
 				84F58F7E16E523B900A24AB2 /* ViewController.xib */,
 				84F58F6A16E523B900A24AB2 /* Supporting Files */,
+				84F58F8816E526B600A24AB2 /* Model.xcdatamodeld */,
 			);
 			path = CoreDataTest;
 			sourceTree = "<group>";
@@ -176,6 +188,8 @@
 				84F58F7016E523B900A24AB2 /* main.m in Sources */,
 				84F58F7416E523B900A24AB2 /* AppDelegate.m in Sources */,
 				84F58F7D16E523B900A24AB2 /* ViewController.m in Sources */,
+				84F58F8A16E526B600A24AB2 /* Model.xcdatamodeld in Sources */,
+				84F58F8D16E52BD700A24AB2 /* Application.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +314,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84F58F8816E526B600A24AB2 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84F58F8916E526B600A24AB2 /* Model.xcdatamodel */,
+			);
+			currentVersion = 84F58F8916E526B600A24AB2 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 84F58F5816E523B800A24AB2 /* Project object */;
 }

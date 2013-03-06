@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @class ViewController;
 
@@ -15,5 +16,8 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) ViewController *viewController;
-
+@property  (strong, nonatomic) NSManagedObjectContext* managedContex;
+@property  (strong, nonatomic) NSPersistentStoreCoordinator* storeCoordinator;
+@property  (strong,nonatomic) NSManagedObjectModel* manageModel;
+@property  (strong,nonatomic) NSFetchedResultsController* fetchResultController;
 @end
